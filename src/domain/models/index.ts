@@ -1,1 +1,1 @@
-export type {default as Task} from './task'
+export type {default as Movie} from './movie'
