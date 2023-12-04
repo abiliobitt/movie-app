@@ -1,15 +1,15 @@
 import { HttpClient, HttpStatusCode } from '../protocols/http'
 import { UnexpectedError} from '../../domain/errors'
-import { LoadMovieList } from '../../domain/useCases'
+import { SearchMovie } from '../../domain/useCases'
 import { Movie } from '../../domain/models'
 
-export class RemoteLoadMovieList implements LoadMovieList {
+export class RemoteSearchMovie implements SearchMovie {
     constructor(
     private readonly url: string,
     private readonly httpClient: HttpClient,
     ) {}
 
-    async loadAll(): Promise<Movie[]> {
+    async searchMovie(): Promise<Movie[]> {
         const httpResponse = await this.httpClient.request({
             url: this.url,
             method: 'get',

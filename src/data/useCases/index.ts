@@ -1,1 +1,1 @@
-export * from './remote-load-movie-list'
+export * from './remote-search-movie'
