@@ -1,11 +1,21 @@
-import { NavBar } from '../../components'
+import { IllustratedMessage, } from '@ui5/webcomponents-react'
+import SearchInput from '../../components/SearchInput'
+
+import'./styles.scss'
 
 const Home: React.FC = () => {
+
     return (
-        <>
-            <NavBar />
-            <h1>Home</h1>
-        </>
+        <div className='home-wrapper'>
+            <div className="search-input__wrapper">
+                <SearchInput className="search-input" />
+            </div>
+            <IllustratedMessage
+                titleText="Nenhuma busca feita :)"
+                subtitleText="Que tal buscar o filme que gostaria de ver as informações?"
+            />
+                
+        </div>
     )
 }
 

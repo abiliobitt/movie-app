@@ -1,14 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { ThemeProvider } from '@ui5/webcomponents-react'
 import reportWebVitals from './reportWebVitals'
 import './App.scss'
 import Router from './main/routes'
-
+import { NavBar } from './presentation/components'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
-        <Router />
+        <ThemeProvider>
+            <NavBar />
+            <Router />
+        </ThemeProvider>
     </React.StrictMode>,
 )
 

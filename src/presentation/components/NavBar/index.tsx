@@ -4,7 +4,9 @@ import'./styles.scss'
 
 const NavBar: React.FC = () => {
     return (
-        <div className='wrapper'><h1>Movie Star</h1></div>
+        <div className='navbar__wrapper'>
+            <h1 className='navbar__title'>Movie Star</h1>
+        </div>
     )
 }
 

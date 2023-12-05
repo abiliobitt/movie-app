@@ -1,5 +1,10 @@
 
-.wrapper {
+.navbar__wrapper {
   padding: 15px;
   background: papayawhip;
+  .navbar__title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
 }
