@@ -2,5 +2,5 @@ import { makeApiUrl, makeAxiosHttpClient } from '../http'
 import { SearchMovie } from '../../../domain/useCases'
 import { RemoteSearchMovie } from '../../../data/useCases'
 
-export const makeRemoteSearchMovie = (): SearchMovie =>
-    new RemoteSearchMovie(makeApiUrl(''), makeAxiosHttpClient())
+export const makeRemoteSearchMovie = (movieName: string): SearchMovie =>
+    new RemoteSearchMovie(makeApiUrl(`movies/search?movieName=${movieName}`), makeAxiosHttpClient())
