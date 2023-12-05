@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 
-import { Wrapper } from './styles'
+import'./styles.scss'
 
 const NavBar: React.FC = () => {
     return (
-        <Wrapper><h1>Logo</h1></Wrapper>
+        <div className='wrapper'><h1>Movie Star</h1></div>
     )
 }
 
