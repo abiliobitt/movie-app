@@ -1,21 +1,19 @@
 import { useCallback, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Button, Input, InputDomRef, SuggestionGroupItem, SuggestionItem, Ui5CustomEvent } from '@ui5/webcomponents-react'
+import { InputSuggestionItemSelectEventDetail } from '@ui5/webcomponents/dist/Input'
 import '@ui5/webcomponents/dist/features/InputSuggestions.js'
 import '@ui5/webcomponents-icons/dist/search'
 import '@ui5/webcomponents/dist/features/InputElementsFormSupport.js'
-import { useDispatch, useSelector } from 'react-redux'
 import debounce from 'lodash.debounce'
 
 import { Movie } from '../../../domain/models'
 import { makeRemoteSearchMovie } from '../../../main/factories/useCases/remote-search-movie-factory'
 import { getMoviesFromSearch, setLoadingStatus } from '../../../data/store/movies'
-import { InputSuggestionItemSelectEventDetail } from '@ui5/webcomponents/dist/Input'
 
-type SearchInputProps = {
-    className: string;
-}
+import'./styles.scss'
 
-const SearchInput = ({className}: SearchInputProps) => {
+const SearchInput = () => {
     const { moviesSearchResult } = useSelector((state: any) => state.searchMoviesList)
     const [searchValue, setSearchValue] = useState<string>()
     const dispatch = useDispatch()
@@ -58,7 +56,7 @@ const SearchInput = ({className}: SearchInputProps) => {
     }
 
     return (
-        <>
+        <div className='search-input__wrapper'>
             <Input
                 accessibleName="search-movie-bar"
                 accessibleNameRef="search-movie-bar"
@@ -69,7 +67,7 @@ const SearchInput = ({className}: SearchInputProps) => {
                 onSuggestionItemSelect={(e: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => console.log('onSuggestionItemSelect', e.detail.item.id)}
                 placeholder="Nome do filme que deseja buscar"
                 showSuggestions
-                className={className}
+                className='search-input'
                 value={searchValue}
             >
                 {
@@ -87,7 +85,7 @@ const SearchInput = ({className}: SearchInputProps) => {
                 onClick={() =>alert('clicou')}
             >
             </Button>
-        </>
+        </div>
     )
 }
 

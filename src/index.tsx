@@ -7,13 +7,15 @@ import './App.scss'
 import Router from './main/routes'
 import { NavBar } from './presentation/components'
 import { store } from './data/store'
+import SearchInput from './presentation/components/SearchInput'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
         <ThemeProvider>
-            <NavBar />
             <Provider store={store}>
+                <NavBar />
+                <SearchInput />
                 <Router />
             </Provider>
         </ThemeProvider>
