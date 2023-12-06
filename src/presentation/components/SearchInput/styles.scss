@@ -1,8 +1,11 @@
 .search-input__wrapper {
-    width: 100%;
-    text-align: center;
-    width: 100%;
-    .search-input {
-        width: 60%;                
+  width: 100%;
+  text-align: center;
+  width: 100%;
+  .search-input {
+    width: 60%;
+    @media (max-width: 600px) {
+        width: 100%;
     }
+  }
 }
