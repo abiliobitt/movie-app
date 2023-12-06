@@ -8,7 +8,7 @@ import debounce from 'lodash.debounce'
 
 import { Movie } from '../../../domain/models'
 import { makeRemoteSearchMovie } from '../../../main/factories/useCases/remote-search-movie-factory'
-import { getMoviesFromSearch } from '../../../data/store/movies'
+import { getMoviesFromSearch, setLoadingStatus } from '../../../data/store/movies'
 import { InputSuggestionItemSelectEventDetail } from '@ui5/webcomponents/dist/Input'
 
 type SearchInputProps = {
@@ -33,13 +33,20 @@ const SearchInput = ({className}: SearchInputProps) => {
     }
     const debouncedSearch = useCallback(
         debounce((nextValue: string) => {
-            const remoteLoadMovies = makeRemoteSearchMovie(nextValue)
-            remoteLoadMovies.searchMovie()
-                .then( (response) => {
-                    console.log(response)
-                    dispatch(getMoviesFromSearch(response))
-                })
-                .catch((error: any) => console.error('Error', error.message))
+            if(nextValue.length < 3) {
+                return ''
+            }
+            else {
+                dispatch(setLoadingStatus())
+                const remoteLoadMovies = makeRemoteSearchMovie(nextValue)
+                remoteLoadMovies.searchMovie()
+                    .then( (response) => {
+                        console.log(response)
+                        dispatch(getMoviesFromSearch(response))
+                        dispatch(setLoadingStatus())
+                    })
+                    .catch((error: any) => console.error('Error', error.message))
+            }
         }, 1000),
         [],
     )
@@ -65,7 +72,12 @@ const SearchInput = ({className}: SearchInputProps) => {
                 className={className}
                 value={searchValue}
             >
-                <SuggestionGroupItem text="10 primeiros resultados" />
+                {
+                    searchValue && searchValue.length >= 3 && <SuggestionGroupItem text={`${moviesSearchResult.length} primeiros resultados`} />
+                }
+
+                { searchValue && searchValue.length < 3 && <SuggestionItem text={ 'Digite pelo menos 3 letras'}/> }
+                
                 {
                     moviesSearchResult && <>{generateMoviesOptions()}</>
                 }
