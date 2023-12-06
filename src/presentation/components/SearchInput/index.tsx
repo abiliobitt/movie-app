@@ -12,10 +12,13 @@ import { makeRemoteSearchMovie } from '../../../main/factories/useCases/remote-s
 import { getMoviesFromSearch, setLoadingStatus } from '../../../data/store/movies'
 
 import'./styles.scss'
+import { useNavigate } from 'react-router-dom'
 
 const SearchInput = () => {
     const { moviesSearchResult } = useSelector((state: any) => state.searchMoviesList)
     const [searchValue, setSearchValue] = useState<string>()
+    const navigate = useNavigate()
+
     const dispatch = useDispatch()
 
     const generateMoviesOptions = () => {
@@ -55,6 +58,10 @@ const SearchInput = () => {
         debouncedSearch(nextValue!)
     }
 
+    const handleMovieChoose = (id: string) => {
+        navigate(`/movie/${id}`)
+    }
+
     return (
         <div className='search-input__wrapper'>
             <Input
@@ -63,8 +70,7 @@ const SearchInput = () => {
                 icon={null}
                 name="search-bar"
                 onInput={(e) => handleChange(e)}
-                onSuggestionItemPreview={() => console.log('onSuggestionItemPreview')}
-                onSuggestionItemSelect={(e: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => console.log('onSuggestionItemSelect', e.detail.item.id)}
+                onSuggestionItemSelect={(e: Ui5CustomEvent<InputDomRef, InputSuggestionItemSelectEventDetail>) => handleMovieChoose(e.detail.item.id)}
                 placeholder="Nome do filme que deseja buscar"
                 showSuggestions
                 className='search-input'
