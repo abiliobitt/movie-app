@@ -4,6 +4,9 @@
   background: #7EC3D3 url('../../../assets/banner.png') no-repeat;
   background-size: auto;
   background-position: right;
+  &.-moviepage {
+    height: 25vh;
+  }
   .banner__container {
     width: 80%;
     margin: 0 auto;

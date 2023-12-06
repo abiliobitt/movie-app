@@ -23,7 +23,7 @@ type Movie = {
     production?: string
     website?: string
     response?: string
-    ratings?: [{source: string, value: string}]
+    ratings?: [{Source: string, Value: string}]
 }
 
 export default Movie

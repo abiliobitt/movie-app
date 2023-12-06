@@ -1,17 +1,33 @@
-.home-wrapper {
-    .search-input__wrapper {
-        width: 100%;
-        margin-top: 15px;
-        text-align: center;
-        .search-input {
-            width: 30%;
-            margin-right: 15px;
+.movie-page__wrapper {
+    .container {
+        width: 80%;
+        margin: 30px auto;
+        strong {
+            font-weight: bold;
+            line-height: 21px;
         }
-    }
-    @media (max-width: 620px) {
-        .search-input__wrapper {
-            .search-input {
-                width: 90%;                
+        .movie-title {
+            font-size: 42px;
+            color: #e76d24;
+        }
+        .movie-subtitle {
+            font-size: 24px;
+            color: #e76d24;
+            margin-bottom: 30px;
+            margin-top: 30px;
+        }
+        .movie-description {
+            max-width: 80%;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 21px;
+        }
+        .poster_wrapper {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            .movie-page__poster{
+                border: 3px solid #e76d24;
             }
         }
     }
