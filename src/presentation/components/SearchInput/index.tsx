@@ -71,7 +71,7 @@ const SearchInput = () => {
                 value={searchValue}
             >
                 {
-                    searchValue && searchValue.length >= 3 && <SuggestionGroupItem text={`${moviesSearchResult.length} primeiros resultados`} />
+                    searchValue && searchValue.length >= 3 && <SuggestionGroupItem text={`${moviesSearchResult.length} resultados`} />
                 }
 
                 { searchValue && searchValue.length < 3 && <SuggestionItem text={ 'Digite pelo menos 3 letras'}/> }
@@ -80,11 +80,6 @@ const SearchInput = () => {
                     moviesSearchResult && <>{generateMoviesOptions()}</>
                 }
             </Input>
-            <Button
-                icon="search"
-                onClick={() =>alert('clicou')}
-            >
-            </Button>
         </div>
     )
 }
